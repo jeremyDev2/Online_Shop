@@ -1,6 +1,6 @@
 from django.db import models
 
-class Categoty(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
 
@@ -16,7 +16,7 @@ class Categoty(models.Model):
 
 class Product(models.Model):
     
-    category = models.ForeignKey(Categoty,related_name='products',on_delete=models.CASCADE)
+    category = models.ForeignKey(Category,related_name='products',on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank = True)
