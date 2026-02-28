@@ -1,0 +1,18 @@
+[tool.pyright]
+typeCheckingMode = "basic"
+pythonVersion = "3.14"
+venvPath = "."
+venv = ".venv"
+
+[project]
+name = "ecommerce_shop"
+version = "0.0.1"
+requires-python = ">=3.14"
+dependencies = [
+  "Django==6.0.2",
+  "django-stubs==5.2.9",
+  "django-stubs-ext==5.2.9",
+]
+
+[tool.django-stubs]
+django_settings_module = "ecommerce_shop.settings"
