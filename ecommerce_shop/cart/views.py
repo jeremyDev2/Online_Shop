@@ -23,5 +23,8 @@ def cart_remove(request:HttpRequest, product_id:int) -> HttpResponse:
     return redirect('cart:cart_detail')
 
 def cart_detail(request:HttpRequest) -> HttpResponse:
-    cart:Cart= Cart(request)
+    cart = Cart(request)
+    for item in cart:
+        #key for template
+        item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'override':True})
     return render(request, 'cart/detail.html', {'cart': cart})
