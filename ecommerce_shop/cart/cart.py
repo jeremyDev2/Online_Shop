@@ -1,8 +1,10 @@
 from decimal import Decimal
 from typing import Iterator, TypedDict
 from django.conf import settings
-from ecommerce_shop.ecommerce_shop.settings import CART_SESSION_ID
+from django.contrib.sessions.backends.base import SessionBase
+from django.http import HttpRequest
 from shop.models import Product
+
 
 class CartItem(TypedDict):
     product:Product
@@ -10,28 +12,28 @@ class CartItem(TypedDict):
     quantity:int
     total_price: Decimal
 
-class Cart(object):
 
-    def __init__(self, request) -> None:
-        self.session = request.session
-        cart = self.session.get(settings.CART_SESSION_ID)
+class Cart(object):
+    def __init__(self, request:HttpRequest) -> None:
+        self.session:SessionBase = request.session
+        cart= self.session.get(settings.CART_SESSION_ID)
         if not cart:
-            #save an empty cart in the session
+            # save an empty cart in the session
             cart = self.session[settings.CART_SESSION_ID] = {}
-        self.cart = cart
+        self.cart= cart
 
     def add(self, product, quantity: int, override_quantity: bool) -> None:
         product_id = str(product.id)
         if product_id not in self.cart:
-            self.cart[product_id] = {'quantity':0, 'price': str(product.price)}
+            self.cart[product_id] = {"quantity": 0, "price": str(product.price)}
         if override_quantity:
-            self.cart[product_id]['quantity'] = quantity
+            self.cart[product_id]["quantity"] = quantity
         else:
-            self.cart[product_id]['quantity'] += quantity
+            self.cart[product_id]["quantity"] += quantity
         self.save()
 
     def save(self) -> None:
-        #mark the session as "modified" to make sure it gets saved
+        # mark the session as "modified" to make sure it gets saved
         self.session.modified = True
 
     def remove(self, product) -> None:
@@ -41,14 +43,14 @@ class Cart(object):
         self.save()
 
     def __iter__(self) -> Iterator[CartItem]:
-        #iterate over the items in the cart and get product from DB
-        
+        # iterate over the items in the cart and get product from DB
+
         product_list = self.cart.keys()
-        #get product obj. and add them to the cart
+        # get product obj. and add them to the cart
         products = Product.objects.filter(id__in=product_list)
         cart = self.cart.copy()
         for product in products:
-            cart[str(product.id)]['product'] = product
+            cart[str(product.id)]["product"] = product
         """
         cart = {
                 "12": {"quantity": 2, "price": "9.99", "product": <Product id=12>},
@@ -56,17 +58,20 @@ class Cart(object):
             }
         """
         for item in cart.values():
-            item['price'] = Decimal(item['price'])
-            item['total_price'] = item['price'] * item['quantity']
+            item["price"] = Decimal(item["price"])
+            item["total_price"] = item["price"] * item["quantity"]
             yield item
 
     def __len__(self) -> int:
-        return sum(item['quantity'] for item in self.cart.values())
+        return sum(item["quantity"] for item in self.cart.values())
 
     def get_total_price(self) -> Decimal:
-        return sum((Decimal(item['price']) * item['quantity'] for item in self.cart.values()), Decimal(0),)
+        return sum(
+            (Decimal(item["price"]) * item["quantity"] for item in self.cart.values()),
+            Decimal(0),
+        )
 
     def clear(self) -> None:
-        #remove cart from session
+        # remove cart from session
         del self.session[settings.CART_SESSION_ID]
         self.save()
