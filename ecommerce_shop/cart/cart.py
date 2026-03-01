@@ -1,5 +1,5 @@
 from decimal import Decimal
-from typing import Iterator, TypedDict
+from typing import TypedDict
 from django.conf import settings
 from django.contrib.sessions.backends.base import SessionBase
 from django.http import HttpRequest
@@ -42,7 +42,7 @@ class Cart(object):
             del self.cart[product_id]
         self.save()
 
-    def __iter__(self) -> Iterator[CartItem]:
+    def __iter__(self):
         # iterate over the items in the cart and get product from DB
 
         product_list = self.cart.keys()
