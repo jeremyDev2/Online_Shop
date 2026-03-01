@@ -12,6 +12,7 @@ dependencies = [
   "Django==6.0.2",
   "django-stubs==5.2.9",
   "django-stubs-ext==5.2.9",
+  "pillow>=12.1.1",
 ]
 
 [tool.django-stubs]
