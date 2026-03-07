@@ -18,6 +18,7 @@ dependencies = [
   "python-decouple>=3.8",
   "rabbitmq>=0.2.0",
   "stripe>=14.4.1",
+  "weasyprint>=68.1",
 ]
 
 [tool.django-stubs]
