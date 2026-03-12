@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 class Order(models.Model):
@@ -21,6 +22,17 @@ class Order(models.Model):
 
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())
+
+    def get_stripe_url(self):
+        if not self.stripe_id:
+            #no payment associated
+            return ''
+        if '__test__' in settings.STRIPE_SECRET_KEY:
+            path = '/test/'
+        else:
+            #stripe path for real payment
+            path = '/'
+        return f'https://dashboard.stripe.com{path}payments/{self.stripe_id}'
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
