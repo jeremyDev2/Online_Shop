@@ -4,6 +4,7 @@ from django.utils.safestring import mark_safe
 import csv
 import datetime
 from django.http import HttpResponse
+from django.urls import reverse
 
 def order_payment(obj):
     url = obj.get_stripe_url()
@@ -35,11 +36,15 @@ def export_to_csv(modeladmin, request, queryset):
     return response
 export_to_csv.short_description = 'Export to CSV'
 
+#function takes an Order object as an argument and returns an HTML link for the admin_order_detail URL
+def order_detail(obj):
+    url = reverse('orders:admin_order_detail', args=[obj.id])
+    return mark_safe(f'<a href="{url}">View</a>')
+
 #for editing order items in the admin
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     raw_id_fields = ['product']
-
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display=['id',
