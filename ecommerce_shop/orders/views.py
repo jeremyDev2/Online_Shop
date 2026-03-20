@@ -1,8 +1,9 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpRequest, HttpResponse
 from cart.cart import Cart
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .forms import OrderCreateForm
-from .models import OrderItem
+from .models import OrderItem, Order
 from .tasks import order_created
 
 def order_create(request: HttpRequest) -> HttpResponse:
@@ -27,3 +28,9 @@ def order_create(request: HttpRequest) -> HttpResponse:
         else:
             form = OrderCreateForm()
     return render(request, "orders/order/create.html", {"cart": cart, "form": form})
+
+@staff_member_required
+#get the Order object with the given ID and render a template to display the order.
+def admin_order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, 'admin/orders/order/detail.html', {'order':order})
