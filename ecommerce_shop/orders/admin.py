@@ -41,10 +41,16 @@ def order_detail(obj):
     url = reverse('orders:admin_order_detail', args=[obj.id])
     return mark_safe(f'<a href="{url}">View</a>')
 
+def order_pdf(obj):
+    url = reverse('orders:admin_order_pdf', args=[obj.id])
+    return mark_safe(f'<a href="{url}""></a>')
+order_pdf.short_description = 'Ivoice'
+
 #for editing order items in the admin
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     raw_id_fields = ['product']
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display=['id',
@@ -55,9 +61,12 @@ class OrderAdmin(admin.ModelAdmin):
                   'postal_code',
                   'city',
                   'paid',
-                  'order_payment',
+                  order_payment,
                   'created',
-                  'updated']
+                  'updated',
+                  order_detail,
+                  order_pdf
+                  ]
     list_filter = ['paid', 'created', 'updated']
     inlines = [OrderItemInline]
     actions = [export_to_csv]
