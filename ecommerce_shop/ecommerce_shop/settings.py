@@ -108,6 +108,11 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+#copies all static files from your applications into the directory
+STATIC_ROOT = BASE_DIR / 'static'
 CART_SESSION_ID = 'cart'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-STRIPE_WEBHOOK_SECRET = config('STRIPE_WEBHOOK_SECRET')
+
+STRIPE_SECRET_KEY= config('STRIPE_SECRET_KEY')
+STRIPE_API_VERSION = config('STRIPE_API_VERSION')
+STRIPE_WEBHOOK_SECRET= config('STRIPE_WEBHOOK_SECRET')
