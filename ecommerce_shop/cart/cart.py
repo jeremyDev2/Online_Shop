@@ -21,6 +21,7 @@ class Cart(object):
             # save an empty cart in the session
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart= cart
+        self.coupon_id = self.session.get('coupon_id')
 
     def add(self, product, quantity: int, override_quantity: bool) -> None:
         product_id = str(product.id)
