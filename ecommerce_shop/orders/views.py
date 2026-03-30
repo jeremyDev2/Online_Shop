@@ -15,6 +15,10 @@ def order_create(request: HttpRequest) -> HttpResponse:
         form = OrderCreateForm(request.POST)
         if form.is_valid():
             order: OrderCreateForm = form.save()
+            if card.coupon:
+                order.coupon = cart.coupon
+                ordfer.discount = cart.coupon.discount
+            order.save()
             for item in cart:
                 OrderItem.objects.create(
                     order=order,
