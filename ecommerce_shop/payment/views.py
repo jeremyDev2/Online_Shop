@@ -4,6 +4,7 @@ import stripe
 from django.conf import settings
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+from weasyprint.layout import percent
 from orders.models import Order
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -33,6 +34,11 @@ def payment_process(request):
                                                 'product_data':
                                                 {'name':item.product.name,},},
                                                'quantity':item.quantity,})
+        #stripe coupon
+        if order.coupon:
+            stripe_coupon = stripe.Coupon.create(name=order.coupon.code, percent_off=order.discount, duration='once')
+            session_data['discounts'] = [{'coupon': stripe_coupon.id}]
+
         #create stripe checkout session 
         session = stripe.checkout.Session.create(**session_data)
         #redirect to stripe payment form
