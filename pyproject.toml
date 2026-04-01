@@ -17,6 +17,7 @@ dependencies = [
   "pillow>=12.1.1",
   "python-decouple>=3.8",
   "rabbitmq>=0.2.0",
+  "redis>=7.4.0",
   "stripe>=14.4.1",
   "weasyprint>=68.1",
 ]
