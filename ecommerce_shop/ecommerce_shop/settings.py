@@ -118,3 +118,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STRIPE_SECRET_KEY= config('STRIPE_SECRET_KEY')
 STRIPE_API_VERSION = config('STRIPE_API_VERSION')
 STRIPE_WEBHOOK_SECRET= config('STRIPE_WEBHOOK_SECRET')
+
+#redis settings
+REDIS_HOST = 'localhost'
+REDIS_PORT= 6379
+REDIS_DB = 1
