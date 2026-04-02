@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-02 12:15+0300\n"
+"POT-Creation-Date: 2026-04-02 12:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: cart/forms.py:8
+msgid "Quantity"
+msgstr "Кількість"
+
+
+#: coupons/forms.py:5
+msgid "Coupon"
+msgstr "Купон"
 
 #: ecommerce_shop/settings.py:130
 msgid "English"
@@ -28,3 +37,23 @@ msgstr "Іспанська"
 #: ecommerce_shop/settings.py:132
 msgid "Ukranian"
 msgstr "Українська"
+
+#: shop/templates/shop/base.html:6 shop/templates/shop/base.html:11
+msgid "Shop"
+msgstr "Магазин"
+
+#: shop/templates/shop/base.html:17
+msgid "Your cart:"
+msgstr "Ваша кошик"
+
+#: shop/templates/shop/base.html:27
+msgid "Your cart is empty."
+msgstr "Ваш кошик порожній"
+
+#: shop/templates/shop/product/detail.html:22
+msgid "Add to cart"
+msgstr "Додати в корзину"
+
+#: shop/templates/shop/product/detail.html:27
+msgid "People who bought this also bought"
+msgstr "Люди, які купили цей товар, також купили"
