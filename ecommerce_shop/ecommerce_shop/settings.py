@@ -129,6 +129,7 @@ REDIS_DB = 1
 LANGUAGES = [
 ('en', _('English')),
 ('es', _('Spanish')),
+('ua', _('Ukranian')),
 ]
 
 LANGUAGE_CODE = 'en'
