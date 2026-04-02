@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-02 11:46+0300\n"
+"POT-Creation-Date: 2026-04-02 12:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: ecommerce_shop/settings.py:130
-#. The translation string as it appears in the source code.
-#. The language translation, which is empty by default. This is where you have to enter the actual translation for the given string.
 msgid "English"
 msgstr ""
 
 #: ecommerce_shop/settings.py:131
 msgid "Spanish"
+msgstr ""
+
+#: ecommerce_shop/settings.py:132
+msgid "Ukranian"
 msgstr ""
