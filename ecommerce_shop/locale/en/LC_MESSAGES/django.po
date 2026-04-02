@@ -18,6 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 #: ecommerce_shop/settings.py:130
+#. The translation string as it appears in the source code.
+#. The language translation, which is empty by default. This is where you have to enter the actual translation for the given string.
 msgid "English"
 msgstr ""
 
