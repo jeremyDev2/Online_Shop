@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'payment.apps.PaymentConfig',
     'orders.apps.OrdersConfig',
     'coupons.apps.CouponsConfig',
+    'rosetta',
 ]
 
 MIDDLEWARE = [
