@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-02 12:52+0300\n"
+"POT-Creation-Date: 2026-04-03 20:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,16 +26,48 @@ msgstr ""
 msgid "Coupon"
 msgstr ""
 
-#: ecommerce_shop/settings.py:130
+#: ecommerce_shop/settings.py:131
 msgid "English"
 msgstr ""
 
-#: ecommerce_shop/settings.py:131
+#: ecommerce_shop/settings.py:132
 msgid "Spanish"
 msgstr ""
 
-#: ecommerce_shop/settings.py:132
+#: ecommerce_shop/settings.py:133
 msgid "Ukranian"
+msgstr ""
+
+#: ecommerce_shop/urls.py:11
+msgid "cart/"
+msgstr ""
+
+#: ecommerce_shop/urls.py:12
+msgid "payment/"
+msgstr ""
+
+#: ecommerce_shop/urls.py:13
+msgid "orders/"
+msgstr ""
+
+#: ecommerce_shop/urls.py:14
+msgid "coupons/"
+msgstr ""
+
+#: ecommerce_shop/urls.py:15
+msgid "rosetta/"
+msgstr ""
+
+#: payment/urls.py:8
+msgid "process/"
+msgstr ""
+
+#: payment/urls.py:9
+msgid "completed/"
+msgstr ""
+
+#: payment/urls.py:10
+msgid "canceled/"
 msgstr ""
 
 #: shop/templates/shop/base.html:6 shop/templates/shop/base.html:11
