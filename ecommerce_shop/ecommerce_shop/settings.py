@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'coupons.apps.CouponsConfig',
     'rosetta',
+    'parler',
 ]
 
 MIDDLEWARE = [
@@ -128,13 +129,24 @@ REDIS_PORT= 6379
 REDIS_DB = 1
 
 LANGUAGES = [
-('en', _('English')),
-('es', _('Spanish')),
-('ua', _('Ukranian')),
+    ('en', _('English')),
+    ('es', _('Spanish')),
+    ('ua', _('Ukranian')),
 ]
 
 LANGUAGE_CODE = 'en'
 
 LOCALE_PATHS = [
-BASE_DIR / 'locale',
+    BASE_DIR / 'locale',
 ]
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'},
+        {'code': 'es'},
+    ),
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False,
+    }
+}
