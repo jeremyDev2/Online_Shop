@@ -10,12 +10,14 @@ def product_list(request: HttpRequest, category_slug:str|None=None) -> HttpRespo
     categories:QuerySet[Category] = Category.objects.all()
     products:QuerySet[Product] = Product.objects.filter(available=True)
     if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
+        language = request.LANGUAGE_CODE
+        category = get_object_or_404(Category, translations__language_code=language, translations__slug=category_slug)
         products = products.filter(category=category)
     return render(request, 'shop/product/list.html', {'category' : category, 'products': products, 'categories':categories})
 
 def product_detail(request:HttpRequest, id, slug:str|None) -> HttpResponse:
-    product:Product= get_object_or_404(Product, id=id, slug=slug, available=True)
+    language = request.LANGUAGE_CODE
+    product:Product= get_object_or_404(Product, id=id, translations__language_code=language, transations__slug=slug, available=True)
     cart_product_form:CartAddProductForm = CartAddProductForm()
     r = Recommender()
     recomended_products = r.suggest_the_product([product], 4)
