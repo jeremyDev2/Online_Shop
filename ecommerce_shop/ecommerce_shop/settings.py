@@ -132,7 +132,7 @@ REDIS_DB = 1
 LANGUAGES = [
     ('en', _('English')),
     ('es', _('Spanish')),
-    ('ua', _('Ukranian')),
+    ('uk', _('Ukranian')),
 ]
 
 LANGUAGE_CODE = 'en'
@@ -145,6 +145,7 @@ PARLER_LANGUAGES = {
     None: (
         {'code': 'en'},
         {'code': 'es'},
+        {'code': 'uk'},
     ),
     'default': {
         'fallback': 'en',
