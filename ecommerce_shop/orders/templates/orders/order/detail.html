@@ -1,57 +1,65 @@
 {% extends "admin/base_site.html" %}
+{% load i18n %}
 {% block title %}
-Order {{ order.id }} {{ block.super }}
+{% blocktranslate with order_id=order.id %}Order {{ order_id }}{% endblocktranslate %} {{ block.super }}
 {% endblock %}
 {% block breadcrumbs %}
 <div class="breadcrumbs">
-  <a href="{% url "admin:index" %}">Home</a> &rsaquo;
-  <a href="{% url "admin:orders_order_changelist" %}">Orders</a>
+  <a href="{% url "admin:index" %}">{% translate "Home" %}</a> &rsaquo;
+  <a href="{% url "admin:orders_order_changelist" %}">{% translate "Orders" %}</a>
   &rsaquo;
-  <a href="{% url "admin:orders_order_change" order.id %}">Order {{ order.id
-    }}</a>
-  &rsaquo; Detail
+  <a href="{% url "admin:orders_order_change" order.id %}">
+    {% blocktranslate with order_id=order.id %}Order {{ order_id }}{% endblocktranslate %}
+  </a>
+  &rsaquo; {% translate "Detail" %}
 </div>
 {% endblock %}
 {% block content %}
 <div class="module">
-  <h1>Order {{ order.id }}</h1>
+  <h1>{% blocktranslate with order_id=order.id %}Order {{ order_id }}{% endblocktranslate %}</h1>
   <ul class="object-tools">
     <li>
       <a href="#" onclick="window.print();">
-        Print order
+        {% translate "Print order" %}
       </a>
     </li>
   </ul>
   <table>
     <tr>
-      <th>Created</th>
+      <th>{% translate "Created" %}</th>
       <td>{{ order.created }}</td>
     </tr>
     <tr>
-      <th>Customer</th>
+      <th>{% translate "Customer" %}</th>
       <td>{{ order.first_name }} {{ order.last_name }}</td>
     </tr>
     <tr>
-      <th>E-mail</th>
+      <th>{% translate "E-mail" %}</th>
       <td><a href="mailto:{{ order.email }}">{{ order.email }}</a></td>
     </tr>
     <tr>
-      <th>Address</th>
+      <th>{% translate "Address" %}</th>
       <td>
         {{ order.address }},
         {{ order.postal_code }} {{ order.city }}
       </td>
     </tr>
     <tr>
-      <th>Total amount</th>
+      <th>{% translate "Total amount" %}</th>
       <td>${{ order.get_total_cost }}</td>
     </tr>
     <tr>
-      <th>Status</th>
-      <td>{% if order.paid %}Paid{% else %}Pending payment{% endif %}</td>
+      <th>{% translate "Status" %}</th>
+      <td>
+        {% if order.paid %}
+        {% translate "Paid" %}
+        {% else %}
+        {% translate "Pending payment" %}
+        {% endif %}
+      </td>
     </tr>
     <tr>
-      <th>Stripe payment</th>
+      <th>{% translate "Stripe payment" %}</th>
       <td>
         {% if order.stripe_id %}
         <a href="{{ order.get_stripe_url }}" target="_blank">
@@ -63,14 +71,14 @@ Order {{ order.id }} {{ block.super }}
   </table>
 </div>
 <div class="module">
-  <h2>Items bought</h2>
+  <h2>{% translate "Items bought" %}</h2>
   <table style="width:100%">
     <thead>
       <tr>
-        <th>Product</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Total</th>
+        <th>{% translate "Product" %}</th>
+        <th>{% translate "Price" %}</th>
+        <th>{% translate "Quantity" %}</th>
+        <th>{% translate "Total" %}</th>
       </tr>
     </thead>
     <tbody>
@@ -84,15 +92,16 @@ Order {{ order.id }} {{ block.super }}
       {% endfor %}
       {% if order.coupon %}
       <tr class="subtotal">
-        <td colspan="3">Subtotal</td>
+        <td colspan="3">{% translate "Subtotal" %}</td>
         <td class="num">
           ${{ order.get_total_cost_before_discount|floatformat:2 }}
         </td>
       </tr>
       <tr>
         <td colspan="3">
-          "{{ order.coupon.code }}" coupon
-          ({{ order.discount }}% off)
+          {% blocktranslate with code=order.coupon.code discount=order.discount %}
+          "{{ code }}" coupon ({{ discount }}% off)
+          {% endblocktranslate %}
         </td>
         <td class="num neg">
           - ${{ order.get_discount|floatformat:2 }}
@@ -100,7 +109,7 @@ Order {{ order.id }} {{ block.super }}
       </tr>
       {% endif %}
       <tr class="total">
-        <td colspan="3">Total</td>
+        <td colspan="3">{% translate "Total" %}</td>
         <td class="num">${{ order.get_total_cost | floatformat:2}}</td>
       </tr>
     </tbody>
