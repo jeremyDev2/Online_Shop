@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-03 20:54+0300\n"
+"POT-Creation-Date: 2026-04-08 23:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,12 +53,156 @@ msgid "Your order"
 msgstr "Tu pedido"
 
 #: orders/templates/orders/order/create.html:26
+#: orders/templates/orders/order/detail.html:81
+#: orders/templates/orders/order/detail.html:112
+#: orders/templates/orders/order/pdf.html:56
 msgid "Total"
 msgstr "Total"
 
 #: orders/templates/orders/order/create.html:29
 msgid "Place order"
 msgstr "Realizar pedido"
+
+#: orders/templates/orders/order/created.html:4
+#: orders/templates/orders/order/created.html:7
+msgid "Thank you"
+msgstr ""
+
+#: orders/templates/orders/order/created.html:9
+#, python-format
+msgid ""
+"\n"
+"  Your order has been successfully completed. Your order number is\n"
+"  <strong>%(order_id)s</strong>.\n"
+"  "
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:4
+#: orders/templates/orders/order/detail.html:12
+#: orders/templates/orders/order/detail.html:19
+#, python-format
+msgid "Order %(order_id)s"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:8
+msgid "Home"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:9
+msgid "Orders"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:14
+msgid "Detail"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:23
+#, fuzzy
+#| msgid "Your order"
+msgid "Print order"
+msgstr "Tu pedido"
+
+#: orders/templates/orders/order/detail.html:29
+msgid "Created"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:33
+msgid "Customer"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:37
+#, fuzzy
+#| msgid "e-mail"
+msgid "E-mail"
+msgstr "e-mail"
+
+#: orders/templates/orders/order/detail.html:41
+#, fuzzy
+#| msgid "address"
+msgid "Address"
+msgstr "dirección"
+
+#: orders/templates/orders/order/detail.html:48
+msgid "Total amount"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:52
+msgid "Status"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:55
+#: orders/templates/orders/order/pdf.html:63
+msgid "Paid"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:57
+#: orders/templates/orders/order/pdf.html:65
+msgid "Pending payment"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:62
+msgid "Stripe payment"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:74
+#: orders/templates/orders/order/pdf.html:18
+msgid "Items bought"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:78
+#: orders/templates/orders/order/pdf.html:22
+msgid "Product"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:79
+#: orders/templates/orders/order/pdf.html:23
+msgid "Price"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:80
+#: orders/templates/orders/order/pdf.html:24
+msgid "Quantity"
+msgstr ""
+
+#: orders/templates/orders/order/detail.html:95
+#: orders/templates/orders/order/pdf.html:39
+#, fuzzy
+#| msgid "Total"
+msgid "Subtotal"
+msgstr "Total"
+
+#: orders/templates/orders/order/detail.html:102
+#, python-format
+msgid ""
+"\n"
+"          \"%(code)s\" coupon (%(discount)s%% off)\n"
+"          "
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:4
+msgid "My Shop"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:6
+#, python-format
+msgid "Invoice no. %(order_id)s"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:11
+msgid "Bill to"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:25
+msgid "Cost"
+msgstr ""
+
+#: orders/templates/orders/order/pdf.html:46
+#, python-format
+msgid ""
+"\n"
+"            \"%(code)s\" coupon (%(discount)s%% off)\n"
+"            "
+msgstr ""
 
 #: orders/urls.py:8
 msgid "create/"
